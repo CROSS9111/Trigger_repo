@@ -1,0 +1,17 @@
+name: Trigger Supabase Edge Function Daily
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # 毎日6時UTC（必要に応じてタイムゾーンを調整してください）
+  workflow_dispatch:    # 手動実行も可能にするためのオプション
+
+jobs:
+  trigger-function:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Edge Function
+        run: |
+          curl --request POST '${{ secrets.YOUTUBE_TRIGGER_URL }}' \
+            --header "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            --header "Content-Type: application/json" \
+            --data '{ "a": 5, "b": 10 }'
