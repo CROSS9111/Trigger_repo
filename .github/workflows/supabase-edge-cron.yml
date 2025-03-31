@@ -13,5 +13,4 @@ jobs:
         run: |
           curl --request POST '${{ secrets.YOUTUBE_TRIGGER_URL }}' \
             --header "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
-            --header "Content-Type: application/json" \
-            --data '{ "a": 5, "b": 10 }'
+            --header "Content-Type: application/json" 
